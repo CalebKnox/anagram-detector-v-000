@@ -1,23 +1,18 @@
-require 'pry'
-# Your code goes here!
+
 class Anagram
-
   attr_accessor :word
-
   def initialize(word)
     @word = word
   end
 
   def match(array)
-    anagram_arr = []
-    array.each do |word|
-      letters_array = word.split("")
-      if letters_array.sort != @word.split("").sort
-        next
+    alphabetical_word = word.chars.sort
+    array.collect do |word|
+      if word.chars.sort == alphabetical_word
+        word
       else
-        anagram_arr << word
+        next
       end
-    end
-    anagram_arr
+    end.compact
   end
 end
